@@ -84,10 +84,10 @@ public class AssetServiceImpl implements AssetService {
 		String submitString = assetUtil.generateTransferSubmitParam(asseTransfertSubmitForm);
 		transferLogger.info("调用【转账提交前】的参数" + submitString);
 		String submitUrl =  "asset_transfer_submit";
-		String submitResultString =  TBassUtil.request(applyUrl, applyString);
+		String submitResultString =  TBassUtil.request(submitUrl, submitString);
 		transferLogger.info("调用【转账提交后】的参数" + submitResultString);
 
-		ResultUtil.checkSubmitResultIfSuccess("资产转让提交接口", JSONObject.toJSONString(asseTransfertSubmitForm), submitResultString);
+		//zResultUtil.checkSubmitResultIfSuccess("资产转让提交接口", JSONObject.toJSONString(asseTransfertSubmitForm), submitResultString);
 
 		transferLogger.info("transfer调试结束");
 
@@ -109,7 +109,7 @@ public class AssetServiceImpl implements AssetService {
 		String applyResultString = TBassUtil.request(applyUrl, applyString);
 		settleLogger.info("调用【兑换申请后】" + applyResultString);
 
-		ResultUtil.checkResultIfSuccess("资产兑换申请接口", applyResultString);
+	//	ResultUtil.checkResultIfSuccess("资产兑换申请接口", applyResultString);
 
 		AssetSettleSubmitFormDTO assetSettleSubmitFormDTO = assetPrepareUtil.perpareSettleSubmitForm(assetSettleFormDTO, applyResultString);
 		assetSettleSubmitFormDTO.setConfigDto(configDto);
@@ -118,11 +118,11 @@ public class AssetServiceImpl implements AssetService {
 		settleLogger.info("【兑换【调用提交前】" + submitString);
 		String submitUrl =  "asset_settle_submit";
 		TBassUtil.setConfigDto(configDto);
-		String submitResultString = TBassUtil.request(applyUrl, submitString);
+		String submitResultString = TBassUtil.request(submitUrl, submitString);
 
 		settleLogger.info("【兑换【调用提交】后" + submitResultString);
 
-		ResultUtil.checkSubmitResultIfSuccess("资产提交接口", JSON.toJSONString(assetSettleSubmitFormDTO), submitResultString);
+		//ResultUtil.checkSubmitResultIfSuccess("资产提交接口", JSON.toJSONString(assetSettleSubmitFormDTO), submitResultString);
 		settleLogger.info("settle调试结束");
 
 		AssetSettleDTO assetSettleDTO = new AssetSettleDTO();
@@ -164,7 +164,7 @@ public class AssetServiceImpl implements AssetService {
 		String submitResultString = TBassUtil.request(submitUrl, submitString);
 		transferLogger.info("调用【转账只提交后】" + submitResultString);
 
-		ResultUtil.checkResultIfSuccess("资产提交接口", submitResultString);
+		//ResultUtil.checkResultIfSuccess("资产提交接口", submitResultString);
 	
 		transferLogger.info("issue调试结束");
 
@@ -185,7 +185,7 @@ public class AssetServiceImpl implements AssetService {
 		TBassUtil.setConfigDto(configDto);
 		String submitResultString = TBassUtil.request(submitUrl, submitString);
 		settleLogger.info("调用【兑换只提交后】" + submitResultString);
-		ResultUtil.checkResultIfSuccess("资产提交接口", submitResultString);
+		//ResultUtil.checkResultIfSuccess("资产提交接口", submitResultString);
 
 		AssetSettleDTO assetSettleDTO = new AssetSettleDTO();
 		assetSettleDTO = assetPrepareUtil.generateAssetSettleDTO(assetSettleSubmitFormDTO, submitResultString);
@@ -205,7 +205,7 @@ public class AssetServiceImpl implements AssetService {
 		String applyResultString = TBassUtil.request(applyUrl, applyString);
 		transferLogger.info("调用【转账申请后】的参数" + applyString);
 
-		ResultUtil.checkResultIfSuccess("资产转让申请接口", applyResultString);
+		//ResultUtil.checkResultIfSuccess("资产转让申请接口", applyResultString);
 
 		AssetTransferSubmitFormDTO asseTransfertSubmitForm = assetPrepareUtil.perpareTransferSubmitForm(assetTransferFormDTO, applyResultString);
 		asseTransfertSubmitForm.setConfigDto(configDto);

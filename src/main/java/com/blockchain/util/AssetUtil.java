@@ -158,7 +158,7 @@ public class AssetUtil {
 		paramMap.put("asset_type", 1);
 		paramMap.put("amount", Long.valueOf(assetTransferFormDTO.getAmount()));
 		JSONObject jsonObj = new JSONObject();
-		jsonObj.put("交易时间", System.currentTimeMillis());
+		jsonObj.put("time", System.currentTimeMillis());
 		paramMap.put("extra_info", jsonObj);
 		paramMap.put("timestamp", System.currentTimeMillis() / 1000);
 		paramMap.put("mch_sign", TrustSDK.signString(prvKey, SignStrUtil.mapToKeyValueStr(paramMap).getBytes("UTF-8"), false));
@@ -194,7 +194,7 @@ public class AssetUtil {
 		paramMap.put("src_asset_list", assetList);
 
 		JSONObject jsonObj = new JSONObject();
-		jsonObj.put("申请的信息", "金额为：" + assetSettleFormDTO.getAmount());
+		jsonObj.put("applyInformation", "money" + assetSettleFormDTO.getAmount());
 		paramMap.put("extra_info", jsonObj);
 
 		paramMap.put("timestamp", System.currentTimeMillis() / 1000);
