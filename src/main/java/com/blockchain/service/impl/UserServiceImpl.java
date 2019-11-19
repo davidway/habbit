@@ -8,6 +8,7 @@ import com.blockchain.exception.ServiceException;
 import com.blockchain.exception.StatusCode;
 import com.blockchain.service.UserService;
 import com.blockchain.util.ResultUtil;
+import com.blockchain.util.TBassUtil;
 import com.blockchain.util.UserUtil;
 import com.blockchain.vo.UserInfoVO;
 import com.tencent.trustsql.sdk.TrustSDK;
@@ -62,13 +63,17 @@ public class UserServiceImpl implements UserService {
 		String accountQueryString = UserUtil.generateAccountQueryParam(assetFormVO);
 		logger.debug("调用【资产查询前{}", accountQueryString);
 		ConfigDto configDto = assetFormVO.getConfigDto();
-		String url = configDto.getHost() + "/asset_account_query";
-		String accountQueryResult = HttpClientUtil.post(url, accountQueryString);
+		String url = "asset_account_query";
+		TBassUtil.setConfigDto(configDto);
+		String accountQueryResult = TBassUtil.request(url, accountQueryString);
+
+
 		logger.debug("调用的IP接口是{}",url);
 		logger.debug("调用【资产查询后】{}" , accountQueryResult);
-		ResultUtil.checkResultIfSuccess("资产查询接口", accountQueryResult);
+		//ResultUtil.checkResultIfSuccess("资产查询接口", accountQueryResult);
 
 		JSONObject userRegistRetData = JSON.parseObject(accountQueryResult);
+		userRegistRetData = userRegistRetData.getJSONObject("Data");
 		JSONArray jsonArray = JSON.parseArray(userRegistRetData.getString("asset_list"));
 		List<AssetDTO> assetList = new LinkedList<AssetDTO>();
 		if (jsonArray != null) {

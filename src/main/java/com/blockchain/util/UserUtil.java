@@ -131,11 +131,13 @@ public class UserUtil {
 		String prvKey = configDto.getCreateUserPrivateKey();
 		String mchPublicKehy = configDto.getCreateUserPublicKey();
 		String chainId = configDto.getChainId();
+		String nodeId = configDto.getNodeId();
 		Map<String, Object> paramMap = new TreeMap<String, Object>();
 		paramMap.put("version", "2.0");
 		paramMap.put("sign_type", "ECDSA");
 		paramMap.put("mch_id", mchId);
 		paramMap.put("mch_pubkey", mchPublicKehy);
+		paramMap.put("node_id", nodeId);
 
 		paramMap.put("chain_id", chainId);
 		if (StringUtils.isNotBlank(assetForm.getAssetAccount())) {
@@ -176,12 +178,13 @@ public class UserUtil {
 		chainId = configDto.getChainId();
 		prvKey = configDto.getCreateUserPrivateKey();
 		mchId = configDto.getMchId();
-		
+		String nodeId = configDto.getNodeId();
 		Map<String, Object> paramMap = new TreeMap<String, Object>();
 		paramMap.put("version", "2.0");
 		paramMap.put("sign_type", "ECDSA");
 		paramMap.put("mch_id", mchId);
 		paramMap.put("mch_pubkey", mchPublicKey);
+		paramMap.put("node_id", nodeId);
 
 		if (null != assetForm.getBlockHeightRange()) {
 			

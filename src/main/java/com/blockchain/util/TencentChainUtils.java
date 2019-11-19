@@ -284,14 +284,16 @@ public class TencentChainUtils {
 		String accountQueryString = UserUtil.generateTransQueryParam(assetForm);
 		 logger.debug("调用【交易查询前】{}",  accountQueryString);
 		ConfigDto configDto = assetForm.getConfigDto();
-		String url = configDto.getHost() + "/trans_batch_query";
+		String url =   "trans_batch_query";
 		 logger.info("调用的接口名称是{}",  url);
-		String accountQueryResult = HttpClientUtil.post(url, accountQueryString);
-		ResultUtil.checkResultIfSuccess("交易查询接口", accountQueryResult);
+		/*String accountQueryResult = HttpClientUtil.post(url, accountQueryString);*/
+		TBassUtil.setConfigDto(configDto);
+		String accountQueryResult = TBassUtil.request(url, accountQueryString);
+		/*ResultUtil.checkResultIfSuccess("交易查询接口", accountQueryResult);*/
 		 logger.debug("调用【交易查询后】{}" , accountQueryResult);
 		
 		 JSONObject userRegistRetData = JSON.parseObject(accountQueryResult);
-
+		userRegistRetData = userRegistRetData.getJSONObject("Data");
 		JSONArray jsonArray = JSON.parseArray(userRegistRetData.getString("trans_list"));
 		List<TransInfoDto> transInfoList = new LinkedList<TransInfoDto>();
 		if (jsonArray != null) {
