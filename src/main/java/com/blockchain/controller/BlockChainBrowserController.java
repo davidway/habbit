@@ -13,6 +13,7 @@ import com.blockchain.vo.PhpSystemJsonContentVO;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
+import javafx.concurrent.Service;
 import org.apache.log4j.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -52,12 +53,13 @@ public class BlockChainBrowserController {
 
 		try {
 			//ConfigUtils.check();
-			ValidatorUtil.validate(bindingResult);
+			/*ValidatorUtil.validate(bindingResult);
 			ConfigDto configDto = chainInfoDto.getConfigDto();
 			BlockChainInfoDto blockTransChainInfoDto = blockChainBrowserService.getChainInfo(configDto);
 			phpSystemJsonContentVO.setData(blockTransChainInfoDto);
 			jsonString = JSON.toJSONString(phpSystemJsonContentVO, SerializerFeature.WriteMapNullValue);
-			ResponseUtil.echo(response, jsonString);
+			ResponseUtil.echo(response, jsonString);*/
+			throw new ServiceException().errorCode(10001).errorMessage("暂未开通此功能，敬请期待");
 		} catch (ServiceException e) {
 
 			phpSystemJsonContentVO = phpSystemJsonContentVO.setKnownError(e);
@@ -88,12 +90,13 @@ public class BlockChainBrowserController {
 		String jsonString = "";
 		try {
 			//ConfigUtils.check();
-			ValidatorUtil.validate(bindingResult);
+			/*ValidatorUtil.validate(bindingResult);
 			ParamUtils.checkNum(transHeightDto.getBeginHeight(), transHeightDto.getEndHeight());
 			List<BlockTransDto> blockChainInfoDtoList = blockChainBrowserService.getBlockInfoList(transHeightDto);
 			phpSystemJsonContentVO.setData(blockChainInfoDtoList);
 			jsonString = JSON.toJSONString(phpSystemJsonContentVO, SerializerFeature.WriteMapNullValue);
-			ResponseUtil.echo(response, jsonString);
+			ResponseUtil.echo(response, jsonString);*/
+			throw new ServiceException().errorCode(10001).errorMessage("暂未开通此功能，敬请期待");
 		} catch (ServiceException e) {
 
 			phpSystemJsonContentVO = phpSystemJsonContentVO.setKnownError(e);
@@ -123,7 +126,7 @@ public void getTransInfoList(@Valid @RequestBody TransInfoListDto transInfoListD
 		String jsonString = "";
 		try {
 			//ConfigUtils.check();
-			ValidatorUtil.validate(bindingResult);
+		/*	ValidatorUtil.validate(bindingResult);
 
 			AssetTransQueryFormDTO assetTransQueryFormDTO = new AssetTransQueryFormDTO();
 			Integer pageNo = transInfoListDto.getPageNo();
@@ -135,7 +138,8 @@ public void getTransInfoList(@Valid @RequestBody TransInfoListDto transInfoListD
 			List<TransInfoDto> blockChainInfoDtoList = blockChainBrowserService.getTransInfoList(assetTransQueryFormDTO);
 			phpSystemJsonContentVO.setData(blockChainInfoDtoList);
 			jsonString = JSON.toJSONString(phpSystemJsonContentVO, SerializerFeature.WriteMapNullValue);
-			ResponseUtil.echo(response, jsonString);
+			ResponseUtil.echo(response, jsonString);*/
+			throw new ServiceException().errorCode(10001).errorMessage("暂未开通此功能，敬请期待");
 		} catch (ServiceException e) {
 
 			phpSystemJsonContentVO = phpSystemJsonContentVO.setKnownError(e);
@@ -164,7 +168,7 @@ public void getTransInfoDetails(@Valid @RequestBody TransInfoDetailsDto transInf
 		PhpSystemJsonContentVO phpSystemJsonContentVO = new PhpSystemJsonContentVO();
 		String jsonString = "";
 		try {
-			
+			/*
 			ValidatorUtil.validate(bindingResult);
 			AssetTransQueryFormDTO assetTransQueryFormDTO = new AssetTransQueryFormDTO();
 			assetTransQueryFormDTO.setTransHash(transInfoDetailsDto.getTransHash());
@@ -172,7 +176,8 @@ public void getTransInfoDetails(@Valid @RequestBody TransInfoDetailsDto transInf
 			TransDetailsVo transDetailsVo = blockChainBrowserService.getTransInfoDetailsByHash(assetTransQueryFormDTO);
 			phpSystemJsonContentVO.setData(transDetailsVo);
 			jsonString = JSON.toJSONString(phpSystemJsonContentVO, SerializerFeature.WriteMapNullValue);
-			ResponseUtil.echo(response, jsonString);
+			ResponseUtil.echo(response, jsonString);*/
+			throw new ServiceException().errorCode(10001).errorMessage("暂未开通此功能，敬请期待");
 		} catch (ServiceException e) {
 
 			phpSystemJsonContentVO = phpSystemJsonContentVO.setKnownError(e);
@@ -201,13 +206,14 @@ public void getBlockInfoDetails(@Valid @RequestBody TransHeightDto transHeightDt
 		PhpSystemJsonContentVO phpSystemJsonContentVO = new PhpSystemJsonContentVO();
 		String jsonString = "";
 		try {
-			//ConfigUtils.check();
+			/*//ConfigUtils.check();
 			ValidatorUtil.validate(bindingResult);
 			ParamUtils.checkNumForDetails(transHeightDto.getBeginHeight(), transHeightDto.getEndHeight());
 			BlockDetailsInfo blockDetail = blockChainBrowserService.getBlockInfoDetails(transHeightDto);
 			phpSystemJsonContentVO.setData(blockDetail);
 			jsonString = JSON.toJSONString(phpSystemJsonContentVO, SerializerFeature.WriteMapNullValue);
-			ResponseUtil.echo(response, jsonString);
+			ResponseUtil.echo(response, jsonString);*/
+			throw new ServiceException().errorCode(10001).errorMessage("暂未开通此功能，敬请期待");
 		} catch (ServiceException e) {
 
 			phpSystemJsonContentVO = phpSystemJsonContentVO.setKnownError(e);
