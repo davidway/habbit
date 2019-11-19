@@ -42,7 +42,7 @@ public class TBassUtil {
         params.put("Method",methodName);
         params.put("Param",applyString);
         String paramString = params.toJSONString();
-        logger.debug("请求参数{}",paramString);
+
         SrvInvokeRequest req = SrvInvokeRequest.fromJsonString(paramString, SrvInvokeRequest.class);
 
         SrvInvokeResponse resp = client.SrvInvoke(req);

@@ -40,6 +40,7 @@ import java.net.URLEncoder;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import com.blockchain.service.impl.UserServiceImpl;
 import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Credentials;
 import com.squareup.okhttp.Headers;
@@ -54,11 +55,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.JsonSyntaxException;
+import com.tencentcloudapi.tbaas.v20180416.models.SrvInvokeRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 抽象client类
  */
 abstract public class AbstractClient {
+
+    public static final Logger logger = LoggerFactory.getLogger(AbstractClient.class);
 
     public static final int HTTP_RSP_OK = 200;
     public static final String SDK_VERSION = "SDK_JAVA_3.0.105";
@@ -280,9 +286,12 @@ abstract public class AbstractClient {
         if (!(this.profile.getHttpProfile().getEndpoint() == null)) {
             endpoint = this.profile.getHttpProfile().getEndpoint();
         }
+
         String [] binaryParams = request.getBinaryParams();
         String sm = this.profile.getSignMethod();
+        logger.info( "\n方法名：{}\n,模式{}\n,参数列表{}\n",((SrvInvokeRequest)request).getMethod(),((SrvInvokeRequest)request).getService(),((SrvInvokeRequest)request).getParam());
         String reqMethod = this.profile.getHttpProfile().getReqMethod();
+
 
         // currently, customized params only can be supported via post json tc3-hmac-sha256
         HashMap<String, Object> customizedParams = request.any();
