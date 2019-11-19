@@ -44,7 +44,7 @@ public class AssetUtil {
 		paramMap.put("owner_account_pubkey", assetFormDTO.getUserPublicKey());
 
 		paramMap.put("asset_type", 1);
-
+		paramMap.put("node_id", configDto.getNodeId());
 		paramMap.put("amount", Long.valueOf(assetFormDTO.getAmount()));
 		paramMap.put("unit", assetFormDTO.getUnit());
 
@@ -77,7 +77,7 @@ public class AssetUtil {
 
 		String assetId = assetSubmitFormDTO.getAssetId();
 		String tempString = assetSubmitFormDTO.getSignStr();
-
+		String nodeId = configDto.getNodeId();
 		paramMap.put("version", "2.0");
 		paramMap.put("sign_type", "ECDSA");
 		paramMap.put("mch_id", mchId);
@@ -86,7 +86,7 @@ public class AssetUtil {
 
 		paramMap.put("mch_pubkey", mchPublicKey);
 		paramMap.put("asset_type", 1);
-
+		paramMap.put("node_id", nodeId);
 		paramMap.put("transaction_id", transactionId);
 		paramMap.put("asset_id", assetId);
 		paramMap.put("timestamp", System.currentTimeMillis() / 1000);
@@ -126,6 +126,8 @@ public class AssetUtil {
 		String prvKey = configDto.getCreateUserPrivateKey();
 		String createUserPublicKey = configDto.getCreateUserPublicKey();
 		String chainId = configDto.getChainId();
+		String nodeId = configDto.getNodeId();
+
 		Map<String, Object> paramMap = new TreeMap<String, Object>();
 		paramMap.put("version", "2.0");
 		paramMap.put("sign_type", "ECDSA");
@@ -151,6 +153,8 @@ public class AssetUtil {
 		}
 		paramMap.put("src_asset_list", assetTransferFormDTO.getSrcAsset());
 
+
+		paramMap.put("node_id",nodeId);
 		paramMap.put("asset_type", 1);
 		paramMap.put("amount", Long.valueOf(assetTransferFormDTO.getAmount()));
 		JSONObject jsonObj = new JSONObject();
@@ -178,6 +182,7 @@ public class AssetUtil {
 		paramMap.put("mch_pubkey", configDto.getCreateUserPublicKey());
 
 		paramMap.put("chain_id", configDto.getChainId());
+		paramMap.put("node_id", configDto.getNodeId());
 
 		paramMap.put("src_account", assetSettleFormDTO.getOwnerAccount());
 		paramMap.put("src_account_pubkey", assetSettleFormDTO.getOwnerPublickey());
@@ -208,11 +213,13 @@ public class AssetUtil {
 		String prvKey = configDto.getCreateUserPrivateKey();
 		String mchPublicKey = configDto.getCreateUserPublicKey();
 		String chainId = configDto.getChainId();
+		String nodeId = configDto.getNodeId();
+
 		Map<String, Object> paramMap = new TreeMap<String, Object>();
 		paramMap.put("version", "2.0");
 		paramMap.put("sign_type", "ECDSA");
 		paramMap.put("mch_id", mchId);
-
+		paramMap.put("node_id", nodeId);
 		paramMap.put("mch_pubkey", mchPublicKey);
 
 		paramMap.put("chain_id", chainId);

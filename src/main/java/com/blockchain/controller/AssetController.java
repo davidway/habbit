@@ -197,7 +197,7 @@ public class AssetController {
 		try {
 
 			//ConfigUtils.check();
-			CrmUtils.checkAuth();
+			//CrmUtils.checkAuth();
 			ValidatorUtil.validate(bindingResult);
 			AssetSubmitFormDTO assetSubmitFormDTO = assetService.issueApply(assetFormDTO);
 			phpSystemJsonContentVO.setData(assetSubmitFormDTO);

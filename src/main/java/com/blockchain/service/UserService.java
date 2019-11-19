@@ -23,6 +23,10 @@ public interface UserService {
 	
 	public UserInfoVO addUserHasBaseAccount(UserFormDTO userFormDTO) throws ServiceException, TrustSDKException, UnsupportedEncodingException, Exception;
 
+
+	public UserInfoVO addUserHasBaseAccountWithoutTpki(UserFormDTO userFormDTO) throws ServiceException, TrustSDKException, UnsupportedEncodingException, Exception;
+
+
 	public void checkPairKey(KeyInfoDTO keyInfo) throws TrustSDKException, ServiceException;
 
 }

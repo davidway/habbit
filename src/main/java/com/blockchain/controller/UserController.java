@@ -230,7 +230,7 @@ public class UserController {
 			//ConfigUtils.check();
 			ValidatorUtil.validate(bindingResult);
 			
-			UserInfoVO userInfoVO = userService.addUserHasBaseAccount(userFormDTO);
+			UserInfoVO userInfoVO = userService.addUserHasBaseAccountWithoutTpki(userFormDTO);
 			phpSystemJsonContentVO.setData(userInfoVO);
 			jsonString = JSON.toJSONString(phpSystemJsonContentVO, true);
 

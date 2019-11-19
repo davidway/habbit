@@ -119,6 +119,24 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public UserInfoVO addUserHasBaseAccountWithoutTpki(UserFormDTO userFormDTO) throws ServiceException, TrustSDKException, UnsupportedEncodingException, Exception {
+		UserInfoVO userInfoVO = new UserInfoVO();
+		String id = userFormDTO.getId();
+		String name = userFormDTO.getName();
+		PairKey pairKey = TrustSDK.generatePairKey(true);
+		String publicKey = pairKey.getPublicKey();
+		String privateKey = pairKey.getPrivateKey();
+		userInfoVO.setBasePublicKey(publicKey);
+		userInfoVO.setBasePrivateKey(privateKey);
+
+		String userBaseAccount = TrustSDK.generateAddrByPubkey(publicKey);
+		userInfoVO.setBaseAccountAddress(userBaseAccount);
+		userInfoVO.setName(name);
+		userInfoVO.setId( id);
+		return userInfoVO;
+	}
+
+	@Override
 	public void checkPairKey(KeyInfoDTO keyInfo) throws TrustSDKException, ServiceException {
 		String privateKey = keyInfo.getPrivateKey().trim();
 		String publicKey = keyInfo.getPublicKey().trim();

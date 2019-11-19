@@ -8,6 +8,7 @@ public class AssetPrepareUtil {
 
     public AssetSubmitFormDTO prepareAssetSubmitForm(String applyResultString) {
         JSONObject o = JSON.parseObject(applyResultString);
+        o = o.getJSONObject("Data");
         AssetSubmitFormDTO assetSubmitFormDTO = new AssetSubmitFormDTO();
         String signStrList = o.getString("sign_str_list");
         assetSubmitFormDTO.setSignStr(signStrList);
@@ -25,6 +26,7 @@ public class AssetPrepareUtil {
         s.setUserPrivateKey(assetTransferFormDTO.getUserPrivateKey());
 
         JSONObject o = JSON.parseObject(applyResultString);
+        o = o.getJSONObject("Data");
         String transtionId = o.getString("transaction_id");
         String signList = o.getString("sign_str_list");
         String leftAssetId = o.getString("left_asset_id");
@@ -44,6 +46,7 @@ public class AssetPrepareUtil {
         s.setUserPrivateKey(assetSettleFormDTO.getUserPrivateKey());
 
         JSONObject o = JSON.parseObject(applyResultString);
+        o = o.getJSONObject("Data");
         String transtionId = o.getString("transaction_id");
         String signList = o.getString("sign_str_list");
 
@@ -58,6 +61,8 @@ public class AssetPrepareUtil {
         AssetTransferDTO assetTransferDTO = new AssetTransferDTO();
 
         JSONObject json = JSONObject.parseObject(submitResultString);
+        json = json.getJSONObject("Data");
+
         String dstAssetId = json.getString("dst_asset_id");
         String dstAssetAmount = json.getString("dst_asset_amount");
         String srcAssetId = json.getString("left_asset_id");
@@ -91,6 +96,7 @@ public class AssetPrepareUtil {
 
         String transactionId = assetSettleSubmitFormDTO.getTransactionId();
         JSONObject json = JSONObject.parseObject(submitResultString);
+        json = json.getJSONObject("Data");
         String leftAssetId = json.getString("left_asset_id");
         String transHash = json.getString("trans_hash");
         assetSettleDTO.setTransHash(transHash);
@@ -103,8 +109,10 @@ public class AssetPrepareUtil {
         AssetIssueDTO assetIssueDTO = new AssetIssueDTO();
 
         String transactionId = assetSubmitFormDTO.getTransactionId();
-        String assetId = JSON.parseObject(submitResultString).getString("asset_id");
-        String transHash = JSON.parseObject(submitResultString).getString("trans_hash");
+        JSONObject o = JSON.parseObject(submitResultString);
+        o = o.getJSONObject("Data");
+        String assetId = o.getString("asset_id");
+        String transHash = o.getString("trans_hash");
 
 
         assetIssueDTO.setTransactionId(transactionId);

@@ -19,6 +19,11 @@ public class ConfigDto  {
 	
 	@NotEmpty(message="nodeId不能为空")
 	private String nodeId;
+
+	@NotEmpty(message="secretKey不能为空")
+	private String secretKey;
+	@NotEmpty(message="secret不能为空")
+	private String secretId;
 	
 	
 	public String getNodeId() {
@@ -59,6 +64,19 @@ public class ConfigDto  {
 		this.host = host;
 	}
 
-	
-	
+	public String getSecretKey() {
+		return secretKey;
+	}
+
+	public void setSecretKey(String secretKey) {
+		this.secretKey = secretKey;
+	}
+
+	public String getSecretId() {
+		return secretId;
+	}
+
+	public void setSecretId(String secretId) {
+		this.secretId = secretId;
+	}
 }
