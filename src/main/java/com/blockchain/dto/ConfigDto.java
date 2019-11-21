@@ -12,9 +12,7 @@ public class ConfigDto  {
 	@NotEmpty(message="chainId不能为空")
 	private String chainId;
 	@NotEmpty(message="mchId不能为空")
-	
 	private String mchId;
-	@NotEmpty(message="host不能为空")
 	private String host;
 	
 	@NotEmpty(message="nodeId不能为空")

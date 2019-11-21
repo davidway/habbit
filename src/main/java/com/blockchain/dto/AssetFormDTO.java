@@ -4,13 +4,15 @@ import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.annotation.RegEx;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 @ApiModel("资产发行列表")
 public class AssetFormDTO extends BaseDto{
 	@ApiModelProperty(value = "原资产唯一ID，由业务系统自己维护", required = true)
-	
+	@Pattern(regexp = "(.*[a-zA-Z0-9])$",message = "只能输入数字或者字符")
 	private String sourceId;
 
 	@NotEmpty(message = "内容不能为空")
@@ -18,6 +20,7 @@ public class AssetFormDTO extends BaseDto{
 	private String content;
 	@NotEmpty(message = "金额不能为空")
 	@ApiModelProperty(value = "金额", required = true)
+	@Pattern(regexp = "([0-9]*)$",message = "只能输入正整数")
 	@Min(value = 1, message = "金额必须大于0,而且为整数，最大数字为1+18个0")
 	@Max(value = 1_000_000_000_000_000_000L, message = "金额必须大于0,而且为整数，最大数字为1+18个0")
 	private String amount;

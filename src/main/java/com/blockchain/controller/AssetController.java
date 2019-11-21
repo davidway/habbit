@@ -16,12 +16,10 @@ import com.wordnik.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +33,16 @@ public class AssetController {
     HttpServletResponse response;
 
 	AssetService assetService = new AssetServiceImpl();
+
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	@ResponseBody
+	public PhpSystemJsonContentVO handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+		PhpSystemJsonContentVO response = new PhpSystemJsonContentVO();
+		response.setData("");
+		response.setRetcode(StatusCode.PARAM_ERROR);
+		response.setRetmsg("json格式错误，请检查是否为合法json");
+		return response;
+	}
 
 	@ResponseBody
 	@RequestMapping(value = { "/transfer" }, method = RequestMethod.POST)

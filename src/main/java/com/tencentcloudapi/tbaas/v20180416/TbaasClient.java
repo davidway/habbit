@@ -16,6 +16,8 @@
 package com.tencentcloudapi.tbaas.v20180416;
 
 import java.lang.reflect.Type;
+
+import com.blockchain.exception.ServiceException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
@@ -54,7 +56,7 @@ public class TbaasClient extends AbstractClient{
      * @return ApplyUserCertResponse
      * @throws TencentCloudSDKException
      */
-    public ApplyUserCertResponse ApplyUserCert(ApplyUserCertRequest req) throws TencentCloudSDKException{
+    public ApplyUserCertResponse ApplyUserCert(ApplyUserCertRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<ApplyUserCertResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<ApplyUserCertResponse>>() {
@@ -72,7 +74,7 @@ public class TbaasClient extends AbstractClient{
      * @return BlockByNumberHandlerResponse
      * @throws TencentCloudSDKException
      */
-    public BlockByNumberHandlerResponse BlockByNumberHandler(BlockByNumberHandlerRequest req) throws TencentCloudSDKException{
+    public BlockByNumberHandlerResponse BlockByNumberHandler(BlockByNumberHandlerRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<BlockByNumberHandlerResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<BlockByNumberHandlerResponse>>() {
@@ -90,7 +92,7 @@ public class TbaasClient extends AbstractClient{
      * @return DownloadUserCertResponse
      * @throws TencentCloudSDKException
      */
-    public DownloadUserCertResponse DownloadUserCert(DownloadUserCertRequest req) throws TencentCloudSDKException{
+    public DownloadUserCertResponse DownloadUserCert(DownloadUserCertRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<DownloadUserCertResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<DownloadUserCertResponse>>() {
@@ -108,7 +110,7 @@ public class TbaasClient extends AbstractClient{
      * @return GetBlockListResponse
      * @throws TencentCloudSDKException
      */
-    public GetBlockListResponse GetBlockList(GetBlockListRequest req) throws TencentCloudSDKException{
+    public GetBlockListResponse GetBlockList(GetBlockListRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<GetBlockListResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<GetBlockListResponse>>() {
@@ -126,7 +128,7 @@ public class TbaasClient extends AbstractClient{
      * @return GetBlockListHandlerResponse
      * @throws TencentCloudSDKException
      */
-    public GetBlockListHandlerResponse GetBlockListHandler(GetBlockListHandlerRequest req) throws TencentCloudSDKException{
+    public GetBlockListHandlerResponse GetBlockListHandler(GetBlockListHandlerRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<GetBlockListHandlerResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<GetBlockListHandlerResponse>>() {
@@ -144,7 +146,7 @@ public class TbaasClient extends AbstractClient{
      * @return GetClusterSummaryResponse
      * @throws TencentCloudSDKException
      */
-    public GetClusterSummaryResponse GetClusterSummary(GetClusterSummaryRequest req) throws TencentCloudSDKException{
+    public GetClusterSummaryResponse GetClusterSummary(GetClusterSummaryRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<GetClusterSummaryResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<GetClusterSummaryResponse>>() {
@@ -162,7 +164,7 @@ public class TbaasClient extends AbstractClient{
      * @return GetInvokeTxResponse
      * @throws TencentCloudSDKException
      */
-    public GetInvokeTxResponse GetInvokeTx(GetInvokeTxRequest req) throws TencentCloudSDKException{
+    public GetInvokeTxResponse GetInvokeTx(GetInvokeTxRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<GetInvokeTxResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<GetInvokeTxResponse>>() {
@@ -180,7 +182,7 @@ public class TbaasClient extends AbstractClient{
      * @return GetLatesdTransactionListResponse
      * @throws TencentCloudSDKException
      */
-    public GetLatesdTransactionListResponse GetLatesdTransactionList(GetLatesdTransactionListRequest req) throws TencentCloudSDKException{
+    public GetLatesdTransactionListResponse GetLatesdTransactionList(GetLatesdTransactionListRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<GetLatesdTransactionListResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<GetLatesdTransactionListResponse>>() {
@@ -198,7 +200,7 @@ public class TbaasClient extends AbstractClient{
      * @return GetTransByHashHandlerResponse
      * @throws TencentCloudSDKException
      */
-    public GetTransByHashHandlerResponse GetTransByHashHandler(GetTransByHashHandlerRequest req) throws TencentCloudSDKException{
+    public GetTransByHashHandlerResponse GetTransByHashHandler(GetTransByHashHandlerRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<GetTransByHashHandlerResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<GetTransByHashHandlerResponse>>() {
@@ -216,7 +218,7 @@ public class TbaasClient extends AbstractClient{
      * @return GetTransListHandlerResponse
      * @throws TencentCloudSDKException
      */
-    public GetTransListHandlerResponse GetTransListHandler(GetTransListHandlerRequest req) throws TencentCloudSDKException{
+    public GetTransListHandlerResponse GetTransListHandler(GetTransListHandlerRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<GetTransListHandlerResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<GetTransListHandlerResponse>>() {
@@ -234,7 +236,7 @@ public class TbaasClient extends AbstractClient{
      * @return InvokeResponse
      * @throws TencentCloudSDKException
      */
-    public InvokeResponse Invoke(InvokeRequest req) throws TencentCloudSDKException{
+    public InvokeResponse Invoke(InvokeRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<InvokeResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<InvokeResponse>>() {
@@ -252,7 +254,7 @@ public class TbaasClient extends AbstractClient{
      * @return QueryResponse
      * @throws TencentCloudSDKException
      */
-    public QueryResponse Query(QueryRequest req) throws TencentCloudSDKException{
+    public QueryResponse Query(QueryRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<QueryResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<QueryResponse>>() {
@@ -270,7 +272,7 @@ public class TbaasClient extends AbstractClient{
      * @return SendTransactionHandlerResponse
      * @throws TencentCloudSDKException
      */
-    public SendTransactionHandlerResponse SendTransactionHandler(SendTransactionHandlerRequest req) throws TencentCloudSDKException{
+    public SendTransactionHandlerResponse SendTransactionHandler(SendTransactionHandlerRequest req) throws TencentCloudSDKException,ServiceException{
         JsonResponseModel<SendTransactionHandlerResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<SendTransactionHandlerResponse>>() {
@@ -288,14 +290,16 @@ public class TbaasClient extends AbstractClient{
      * @return SrvInvokeResponse
      * @throws TencentCloudSDKException
      */
-    public SrvInvokeResponse SrvInvoke(SrvInvokeRequest req) throws TencentCloudSDKException{
-        JsonResponseModel<SrvInvokeResponse> rsp = null;
+    public SrvInvokeResponse SrvInvoke(SrvInvokeRequest req) throws TencentCloudSDKException,ServiceException{
+         JsonResponseModel<SrvInvokeResponse> rsp = null;
         try {
                 Type type = new TypeToken<JsonResponseModel<SrvInvokeResponse>>() {
                 }.getType();
                 rsp  = gson.fromJson(this.internalRequest(req, "SrvInvoke"), type);
         } catch (JsonSyntaxException e) {
             throw new TencentCloudSDKException(e.getMessage());
+        }catch (ServiceException e){
+           throw e;
         }
         return rsp.response;
     }

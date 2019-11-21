@@ -16,12 +16,10 @@ import com.wordnik.swagger.annotations.ApiResponses;
 import javafx.concurrent.Service;
 import org.apache.log4j.Logger;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -37,6 +35,16 @@ public class BlockChainBrowserController {
     HttpServletResponse response;
 	@Resource
 	BlockChainBrowserService blockChainBrowserService;
+
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	@ResponseBody
+	public PhpSystemJsonContentVO handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+		PhpSystemJsonContentVO response = new PhpSystemJsonContentVO();
+		response.setData("");
+		response.setRetcode(StatusCode.PARAM_ERROR);
+		response.setRetmsg("json格式错误，请检查是否为合法json");
+		return response;
+	}
 
 	@ResponseBody
 	@RequestMapping(value = { "/getChainInfo" }, method = RequestMethod.POST)

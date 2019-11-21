@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="tbaas:Web exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/tbaas_Web_exploded</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/tbaas</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="tbaas/web/Web" />
       <element id="directory" name="WEB-INF">

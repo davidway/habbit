@@ -25,7 +25,7 @@ public class TBassUtil {
         TBassUtil.configDto = configDto;
     }
 
-    public static String request(String methodName, String applyString) throws TencentCloudSDKException {
+    public static String request(String methodName, String applyString) throws Exception {
         String secretId = configDto.getSecretId();
         String secretKey = configDto.getSecretKey();
         Credential cred = new Credential(secretId, secretKey);
@@ -46,7 +46,7 @@ public class TBassUtil {
         SrvInvokeRequest req = SrvInvokeRequest.fromJsonString(paramString, SrvInvokeRequest.class);
 
         SrvInvokeResponse resp = client.SrvInvoke(req);
-
+        logger.info("retCode={},retMesg={}",resp.getRetCode(),resp.getRetMsg());
         return SrvInvokeRequest.toJsonString(resp);
     }
 }

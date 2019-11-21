@@ -40,6 +40,8 @@ import java.net.URLEncoder;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import com.blockchain.exception.ServiceException;
+import com.blockchain.exception.StatusCode;
 import com.blockchain.service.impl.UserServiceImpl;
 import com.squareup.okhttp.Authenticator;
 import com.squareup.okhttp.Credentials;
@@ -280,7 +282,7 @@ abstract public class AbstractClient {
         });
     }
 
-    protected String internalRequest(AbstractModel request, String actionName) throws TencentCloudSDKException {
+    protected String internalRequest(AbstractModel request, String actionName) throws TencentCloudSDKException, ServiceException {
         Response okRsp = null;
         String endpoint = this.endpoint;
         if (!(this.profile.getHttpProfile().getEndpoint() == null)) {
@@ -289,7 +291,7 @@ abstract public class AbstractClient {
 
         String [] binaryParams = request.getBinaryParams();
         String sm = this.profile.getSignMethod();
-        logger.info( "\n方法名：{}\n,模式{}\n,参数列表{}\n",((SrvInvokeRequest)request).getMethod(),((SrvInvokeRequest)request).getService(),((SrvInvokeRequest)request).getParam());
+        logger.debug( "\n方法名：{}\n,模式{}\n,参数列表{}\n",((SrvInvokeRequest)request).getMethod(),((SrvInvokeRequest)request).getService(),((SrvInvokeRequest)request).getParam());
         String reqMethod = this.profile.getHttpProfile().getReqMethod();
 
 
@@ -331,9 +333,17 @@ abstract public class AbstractClient {
             }.getType();
             errResp = gson.fromJson(strResp, errType);
         } catch (JsonSyntaxException e) {
+            logger.error( "\nmethod：{}\n,pattern:{}\n,param:{}\nerror={}\n errorMessage={}\n",((SrvInvokeRequest)request).getMethod(),((SrvInvokeRequest)request).getService(),((SrvInvokeRequest)request).getParam(),errResp.response.error.code,errResp.response.error.message);
+
             throw new TencentCloudSDKException(e.getClass().getName() + "-" + e.getMessage());
         }
         if (errResp.response.error != null) {
+            logger.error( "\nmethod：{}\n,pattern:{}\n,param:{}\nerror={}\n errorMessage={}\n",((SrvInvokeRequest)request).getMethod(),((SrvInvokeRequest)request).getService(),((SrvInvokeRequest)request).getParam(),errResp.response.error.code,errResp.response.error.message);
+
+            if ( errResp.response.error.code.equals("InternalError")){
+
+                throw new ServiceException().errorCode(StatusCode.THREAD_ERROR).errorMessage(StatusCode.THREAD_ERROR_MESSAGE);
+            };
             throw new TencentCloudSDKException(errResp.response.error.code + "-" + errResp.response.error.message,
                     errResp.response.requestId);
         }

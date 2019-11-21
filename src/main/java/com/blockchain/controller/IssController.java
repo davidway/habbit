@@ -9,13 +9,16 @@ import com.blockchain.exception.StatusCode;
 import com.blockchain.service.IssService;
 import com.blockchain.service.impl.IssServiceImpl;
 import com.blockchain.util.ResponseUtil;
+import com.blockchain.vo.PhpSystemJsonContentVO;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,6 +34,16 @@ public class IssController {
     HttpServletResponse response;
 
 	IssService issService = new IssServiceImpl();
+
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	@ResponseBody
+	public PhpSystemJsonContentVO handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+		PhpSystemJsonContentVO response = new PhpSystemJsonContentVO();
+		response.setData("");
+		response.setRetcode(StatusCode.PARAM_ERROR);
+		response.setRetmsg("json格式错误，请检查是否为合法json");
+		return response;
+	}
 
 	@ResponseBody
 	@RequestMapping(value = { "/add" }, method = RequestMethod.POST)

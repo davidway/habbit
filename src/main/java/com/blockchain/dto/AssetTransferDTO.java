@@ -18,6 +18,7 @@ public class AssetTransferDTO {
 	@ApiModelProperty(value = "区块链交易Fhash值", dataType = "String")
 	private String transHash;
 	@ApiModelProperty(value = "如果资产有剩余，则返回找零后的资产份额", dataType = "String")
+
 	private String srcAmount;
 	@ApiModelProperty(value = "手续费资产份额", dataType = "String")
 	private String feeAssetAmount;
