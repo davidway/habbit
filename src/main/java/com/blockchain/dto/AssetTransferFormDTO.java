@@ -12,7 +12,7 @@ import javax.validation.constraints.Pattern;
 public class AssetTransferFormDTO extends BaseDto {
 	@NotEmpty(message = "金额不能为空")
 	@ApiModelProperty(value = "份额", required = true)
-	@Pattern(regexp = "([0-9]*)$",message = "只能输入正整数")
+	@Pattern(regexp = "([0-9]*)$",message = "金额只能输入正整数")
 	@Min(value = 1, message = "金额必须大于0,而且为整数，最大数字为大数字为18个9")
 	@Max(value = 1_000_000_000_000_000_000L, message = "最大数字为大数字为18个9")
 	// @Max(value = 10_000_000_000_000L, message =
@@ -31,11 +31,10 @@ public class AssetTransferFormDTO extends BaseDto {
 
 	@ApiModelProperty(value = "手续费转入帐户", required = false)
 
-	@Pattern(regexp = "([0-9]*)$",message = "只能输入正整数")
 	private String feeAccount;
 	@ApiModelProperty(value = "手续费份额,64位长", required = false)
 
-	@Pattern(regexp = "([0-9]*)$",message = "只能输入正整数")
+	@Pattern(regexp = "([0-9]*)$",message = "金额只能输入正整数")
 	@Min(value = 1, message = "金额必须大于0,而且为整数，最大数字为18个9")
 	@Max(value = 1_000_000_000_000_000_000L, message = "最大数字为大数字为18个9")
 	// @Max(value = 9_999_999_999_999L, message =

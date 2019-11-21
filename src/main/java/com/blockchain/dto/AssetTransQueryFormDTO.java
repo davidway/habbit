@@ -5,6 +5,7 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -19,13 +20,14 @@ public class AssetTransQueryFormDTO  extends BaseDto{
 	private String transactionId;
 	@ApiModelProperty(value="交易hash值",required=false)
 	private String transHash;
-	
-	
 
+
+	@NotNull(message="页码limit不能为空")
 	@Max(value=20,message="页码limit最大为20")
 	@Min(value=1,message="页码必须大于1")
 	@ApiModelProperty(value="页码limit，最小为1，最大为20",required=true)
 	private Integer pageLimit;
+	@NotNull(message="页码不能为空")
 	@ApiModelProperty(value="页码,最小值不能小于1",required=true)
 	@Min(value=1,message="最小值不能小于1")
 	private Integer pageNo;

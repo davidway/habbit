@@ -22,8 +22,10 @@ public class AccountQueryFormDTO {
 	private String assetId;
 	@ApiModelProperty(value= "页码limit",required=true)
 	@Max(value=20,message="页码limit最大是20")
+	@NotNull(message="页码limit必须存在")
 	private Integer pageLimit;
 	@ApiModelProperty(value= "页码",required=true)
+	@NotNull(message="页码必须存在")
 	@Min(value=1,message="页码必须大于1")
 	private Integer pageNo;
 	@ApiModelProperty(value= "状态值,0：正常持有 3：已全额转让 5：已清算",required=true)

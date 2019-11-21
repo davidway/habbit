@@ -25,7 +25,7 @@ public class ValidatorUtil {
 		}
 		if ( StringUtils.isNotBlank(sb)){
 			
-			throw new ServiceException().data(sb).pos("检查参数是否为空").errorCode(StatusCode.PARAM_ERROR).errorMessage(StatusCode.PARAM_ERROR_MESSAGE);
+			throw new ServiceException().pos("检查参数是否为空").errorCode(StatusCode.PARAM_ERROR).errorMessage(sb.toString());
 		}
 	}
 

@@ -14,7 +14,7 @@ import javax.validation.constraints.Pattern;
 public class AssetSettleFormDTO  extends BaseDto {
 	@ApiModelProperty(value="转账金额",required=true)
 
-	@Pattern(regexp = "([0-9]*)$",message = "只能输入正整数")
+	@Pattern(regexp = "([0-9]*)$",message = "金额只能输入正整数")
 	@NotNull(message="金额不能为空")
 	@Min(value=1,message="金额必须为正整数")
 	@Max(value=1_000_000_000_000_000_000L,message="最大数字为大数字为18个9")
