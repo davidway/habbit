@@ -232,6 +232,7 @@ public class UserController {
 			
 			UserInfoVO userInfoVO = userService.addUserHasBaseAccountWithoutTpki(userFormDTO);
 			phpSystemJsonContentVO.setData(userInfoVO);
+            phpSystemJsonContentVO.setData("ces");
 			jsonString = JSON.toJSONString(phpSystemJsonContentVO, true);
 
 		} catch (ServiceException e) {
