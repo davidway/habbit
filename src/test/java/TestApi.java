@@ -42,6 +42,7 @@ public class TestApi {
     @Test
     public void testBlockingQueue(){
         BlockingQueue<Runnable> queue = new LinkedBlockingDeque<Runnable>();
+        System.out.println("hello world!");
         ThreadPoolExecutor executor = new ThreadPoolExecutor(2,6,1,TimeUnit.DAYS,queue);
         for ( int i=0 ; i< 10 ; i++){
             Worker work = new Worker();
