@@ -35,7 +35,7 @@ public class TestApi {
                 + executor.getActiveCount());
         System.out.println("Total number of threads(ever scheduled): "
                 + executor.getTaskCount());
-
+        System.out.println();
         executor.shutdown();
     }
 
