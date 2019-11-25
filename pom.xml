@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.tencentcloudapi</groupId>
-  <artifactId>tencentcloud-sdk-java</artifactId>
+  <artifactId>tbaas</artifactId>
   <version>3.0.105</version>
-  <packaging>jar</packaging>
-  <name>tencentcloud-sdk-java</name>
-  <url>https://cloud.tencent.com/</url>
+  <packaging>war</packaging>
+  <name>tbaas</name>
+
   <description>Tencent Cloud Open API SDK for Java</description>
 
 
@@ -451,6 +451,7 @@
 
   </properties>
   <build>
+    <finalName>tbaas</finalName>
     <plugins>
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
