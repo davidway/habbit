@@ -1,10 +1,6 @@
 package com.blockchain.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.blockchain.dto.AccountQueryFormDTO;
-import com.blockchain.dto.AssetTransQueryFormDTO;
-import com.blockchain.dto.ConfigDto;
-import com.blockchain.dto.UserFormDTO;
 import com.blockchain.vo.UserInfoVO;
 import com.tencent.trustsql.sdk.TrustSDK;
 import com.tencent.trustsql.sdk.bean.AccountCert;

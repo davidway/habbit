@@ -1,8 +1,6 @@
 package com.blockchain.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.blockchain.dto.CrmResultSet;
-import com.blockchain.dto.CrmServiceDTO;
 import com.blockchain.exception.ServiceException;
 import com.blockchain.exception.StatusCode;
 import org.apache.log4j.Logger;

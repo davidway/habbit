@@ -1,6 +1,5 @@
 package com.blockchain.util;
 
-import com.blockchain.dto.AssetTransferFormDTO;
 import com.blockchain.exception.ServiceException;
 import com.blockchain.exception.StatusCode;
 import org.apache.commons.lang3.StringUtils;
