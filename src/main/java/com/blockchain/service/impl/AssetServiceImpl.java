@@ -12,6 +12,7 @@ import com.blockchain.util.ResultUtil;
 import com.blockchain.util.TBassUtil;
 import com.tencent.trustsql.sdk.exception.TrustSDKException;
 import com.tencent.trustsql.sdk.util.HttpClientUtil;
+import org.apache.ibatis.jdbc.Null;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class AssetServiceImpl implements AssetService {
 		TBassUtil.setConfigDto(configDto);
 				String applyResultString = TBassUtil.request(applyUrl, applyString);
 		issueLogger.info("调用【发行申请】后的参数{}", applyResultString);
-		//ResultUtil.checkResultIfSuccess("资产申请接口", applyResultString);
+		ResultUtil.checkResultIfSuccess("资产申请接口", applyResultString);
 
 		String userPrivateKey = assetFormDTO.getUserPrivateKey();
 		AssetSubmitFormDTO assetSubmitFormDTO = assetPrepareUtil.prepareAssetSubmitForm(applyResultString);
@@ -76,7 +77,7 @@ public class AssetServiceImpl implements AssetService {
 		String applyResultString = TBassUtil.request(applyUrl, applyString);
 		transferLogger.info("调用【转账申请后】的参数" + applyResultString);
 
-		//ResultUtil.checkResultIfSuccess("资产转让申请接口", applyResultString);
+		ResultUtil.checkResultIfSuccess("资产转让申请接口", applyResultString);
 
 		AssetTransferSubmitFormDTO asseTransfertSubmitForm = assetPrepareUtil.perpareTransferSubmitForm(assetTransferFormDTO, applyResultString);
 		transferLogger.info("调用【转账申请后】的参数" + asseTransfertSubmitForm);
@@ -109,7 +110,7 @@ public class AssetServiceImpl implements AssetService {
 		String applyResultString = TBassUtil.request(applyUrl, applyString);
 		settleLogger.info("调用【兑换申请后】" + applyResultString);
 
-	//	ResultUtil.checkResultIfSuccess("资产兑换申请接口", applyResultString);
+		ResultUtil.checkResultIfSuccess("资产兑换申请接口", applyResultString);
 
 		AssetSettleSubmitFormDTO assetSettleSubmitFormDTO = assetPrepareUtil.perpareSettleSubmitForm(assetSettleFormDTO, applyResultString);
 		assetSettleSubmitFormDTO.setConfigDto(configDto);

@@ -15,17 +15,15 @@ public class ResultUtil {
 		if (StringUtils.isBlank(resultString)) {
 			throw new ServiceException().errorCode(StatusCode.SYSTEM_UNKOWN_ERROR).errorMessage("调用SDK网络失败，请检查网络");
 		}
+
 		JSONObject applyObject = JSONObject.parseObject(resultString);
+		applyObject = applyObject.getJSONObject("Data");
 		Integer retcode = applyObject.getInteger("retcode");
 
-		if (retcode.equals(83590142)) {
-
-			Integer errorCode = StatusCode.APPLY_THREAD_ERROR;
-			throw new ServiceException().errorCode(errorCode).errorMessage(applyObject.getString("retmsg"));
-		} else if (retcode != 0 && retcode.equals(83590142) == false) {
+		 if (retcode != 0 ) {
 			Integer errorCode = StatusCode.SYSTEM_UNKOWN_ERROR;
 			String jsonString =applyObject.getString("retmsg");
-			throw new ServiceException().pos(pos).errorCode(errorCode).errorMessage(jsonString);
+			throw new ServiceException().pos(pos).data(applyObject).errorCode(errorCode).errorMessage(jsonString);
 		} else {
 			log.debug( "{}成功！结果为{}",pos , applyObject.toJSONString());
 		}
